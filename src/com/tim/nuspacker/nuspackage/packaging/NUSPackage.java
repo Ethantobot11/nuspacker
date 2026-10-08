@@ -75,9 +75,9 @@ public class NUSPackage {
         } 
         
         //Set the correct FST hash and size.
-        Content fstContent = getContents().getFSTContent();
-        fstContent.setHash(HashUtil.hashSHA1(getFST().getAsData()));
-        fstContent.setEncryptedFileSize(getFST().getAsData().length);
+       Content fstContent = getContents().getFSTContent();
+       fstContent.setHash(HashUtil.hashSHA1(getFST().getAsData()));
+       fstContent.setEncryptedFileSize(Utils.align(getFST().getAsData().length, Content.CONTENT_FILE_PADDING));
         
         //Update the grouphash
         ContentInfo contentInfo = getContentInfos().getContentInfo(0);
